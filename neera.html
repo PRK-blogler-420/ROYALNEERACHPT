@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Neera Bottle Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background: green;
+      border: none;
+      color: white;
+      width: 200px;
+
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+
+    }
+
+    /* Background video */
+
+    video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+    }
+
+    /* Navigation */
+
+    nav {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+    }
+
+    nav a {
+      margin: 20px;
+      color: white;
+      font-size: 18px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Sections */
+
+    section {
+      display: none;
+      padding: 80px 20px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    /* Product Cards */
+
+    .card {
+      background: rgba(0, 0, 0, 0.6);
+      display: inline-block;
+      padding: 30px;
+      margin: 20px;
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+    }
+
+    /* Form */
+
+    input,
+    textarea {
+      width: 260px;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    #nt {
+      width: 35px;
+      margin: 0 -10px 0 -9px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: green;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .l {
+      padding: 10px 20px;
+      background: blue;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .ribbon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: Arial, sans-serif;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .ribbon img {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Video -->
+
+  <video autoplay muted loop>
+    <source src="r.mp4" type="video/mp4">
+  </video>
+
+  <!-- Navigation -->
+
+  <nav>
+    <a onclick="showSection('index')">Index</a>
+    <a onclick="showSection('dashboard')">Dashboard</a>
+    <a onclick="showSection('contact')">Contact</a>
+  </nav>
+
+  <!-- INDEX PAGE -->
+
+  <section id="index" class="active">
+
+    <h1>Neera Bottle Store</h1>
+    <h3>Available Neera Bottles cash on Delivery</h3>
+    <h3>you can order the minmum 5 liters</h3>
+
+    <div class="card">
+      <h2>1 Liter</h2>
+      <h3>Rs160</h3>
+      <button onclick="openForm('1 Liter')">Shop Now</button>
+    </div>
+
+    <div class="card">
+      <h2>2 Liter</h2>
+      <h3>Rs 320</h3>
+      <button onclick="openForm('2 Liter')">Shop Now</button>
+    </div>
+
+    <div class="card">
+      <h2>5 Liter</h2>
+      <h3>Rs 800</h3>
+      <button onclick="openForm('5 Liter')">Shop Now</button>
+    </div>
+
+    <div class="card">
+      <h2> 20 Liter</h2>
+      <h3>Rs 3200</h3>
+      <button onclick="openForm('5 Liter')">Shop Now</button>
+    </div>
+
+  </section>
+
+  <!-- ORDER PAGE -->
+
+
+
+
+  <section id="order">
+    <h3> cash on Delivery</h3>
+    <h3>you can order the minmum 5 liters</h3>
+    <h2>Order Neera</h2>
+    <form action="base.php" method="POST">
+
+      <input type="text" name="name" placeholder="Your Name" required><br>
+
+      <input type="number" name="phone" placeholder="Phone Number" minlength="10" maxlength="10" required><br>
+
+      <button type="button" onclick="decrementNumber()"> - </button>
+
+      <input id="nt" name="quantity" type="number" value="5" min="5" max="25" required>
+
+      <input type="text" id="nt" value="liter's" readonly>
+
+      <button type="button" onclick="incrementNumber()"> + </button>
+      <br>
+
+      <textarea class="location" name="address" placeholder="Location Details" required></textarea><br>
+
+      <input id="locationBox" name="address_link" placeholder="Location Link will appear here" readonly required><br>
+
+      <button type="button" onclick="getLocation()">Pin Current Location</button><br>
+
+      <input class="btn" type="submit" value="Submit">
+    </form>
+
+
+  </section>
+
+  <!-- DASHBOARD -->
+
+  <section id="dashboard">
+
+
+
+    <h1>Health Advantages of Neera</h1>
+
+    <p>
+      Helps prevent cancer and supports immunity.
+    </p>
+
+    <p>
+      Anti-bacterial and anti-oxidant properties.
+    </p>
+
+    <p>
+      Helps control diabetes and improves blood sugar balance.
+    </p>
+
+    <p>
+      Improves kidney function and body detoxification.
+    </p>
+
+    <p>
+      Purifies blood and improves hemoglobin levels.
+    </p>
+
+    <p>
+      Strengthens immunity system and prevents infections.
+    </p>
+
+    <p>
+      Improves heart health and circulation.
+    </p>
+
+    <p>
+      Good for eyesight and brain function.
+    </p>
+
+    <p>
+      Supports liver health and detoxification.
+    </p>
+
+    <p>
+      Improves bone strength and joint health.
+    </p>
+
+    <p>
+      Helps respiratory system and breathing.
+    </p>
+
+
+    <div class="ribbon">
+      <img src="k.png">
+      <h6>for web design</h6><br>
+      <h6>contact</h6>
+    </div>
+
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <H2>CONTACT DETAILS</H2>
+
+    <a href="mailto:royalneerachpt@gmail.com">
+      <h3>royalneerachpt@gmail.com</h3>
+    </a>
+
+    <h3>+91 9353346664</h3>
+
+    <input style="width:120px;" id="phoneNumber" type="text" placeholder="below link to click" readonly>
+    <br>
+
+    <button onclick="openWhatsApp()">Whatsapp Chat</button>
+    <h3> vist our location </h3>
+
+    <iframe src="https://www.google.com/maps?q=12.64275,77.1563333&output=embed" width="320" height="550"
+      style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+
+  </section>
+
+  <script>
+
+    /* Page Navigation */
+
+    function showSection(id) {
+
+      var sections = document.querySelectorAll("section")
+
+      sections.forEach(function (section) {
+        section.classList.remove("active")
+      })
+
+      document.getElementById(id).classList.add("active")
+
+    }
+
+    /* Shop button */
+
+    function openForm(product) {
+
+      showSection("order")
+
+    }
+
+    /* Location */
+
+    function getLocation() {
+
+      if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+
+          let lat = position.coords.latitude
+          let lon = position.coords.longitude
+
+          let link = `https://www.google.com/maps?q=${lat},${lon}`
+
+          document.getElementById("locationBox").value = link
+
+        })
+
+      } else {
+
+        alert("Location not supported")
+
+      }
+
+    }
+
+    /* Submit */
+
+    function submitOrder() {
+
+      alert("Order Submitted Successfully!")
+
+      showSection("dashboard")
+
+    }
+
+
+    function openWhatsApp() {
+
+      const url = `https://wa.me/9353346664`
+      window.open(url, '_blank')
+
+    }
+
+  </script>
+  <script>
+    function incrementNumber() {
+      const input = document.getElementById('numberInput');
+      if (parseInt(input.value) < 25) {
+        input.value = parseInt(input.value) + 1;
+      }
+    }
+
+    function decrementNumber() {
+      const input = document.getElementById('nt');
+      if (parseInt(input.value) > 5) {
+        input.value = parseInt(input.value) - 1;
+      }
+    }
+  </script>
+  <script>
+    function incrementNumber() {
+      var input = document.getElementById("nt");
+      var value = parseInt(input.value);
+
+      if (value < 25) {
+        input.value = value + 1;
+      }
+    }
+
+    function decrementNumber() {
+      var input = document.getElementById("nt");
+      var value = parseInt(input.value);
+
+      if (value > 5) {
+        input.value = value - 1;
+      }
+    }
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var link = "https://www.google.com/maps?q=" +
+            position.coords.latitude + "," + position.coords.longitude;
+
+          document.getElementById("locationBox").value = link;
+        });
+      } else {
+        alert("Geolocation not supported");
+      }
+    }
+  </script>
+</body>
+
+</html>
